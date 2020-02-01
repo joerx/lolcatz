@@ -23,7 +23,7 @@ class UploadButton extends React.Component {
 class Thumbnail extends React.Component {
   render() {
     return (
-      <img src={this.props.src}/>
+      <img src={this.props.src} alt="A funny cat"/>
     )
   }
 }
@@ -46,7 +46,7 @@ class LolCatz extends React.Component {
             enabled={this.state.uploading}
             caption={this.state.uploading ? "Uploading..." : "Upload"}
           /></li>
-          {this.state.images.map((img) => <li><Thumbnail src={img.src} /></li>)}
+          {this.state.images.map((img) => <li key={img}><Thumbnail src={img.src} /></li>)}
         </ul>
     </div>)
   }
@@ -62,7 +62,7 @@ class LolCatz extends React.Component {
 
     const data = new FormData()
     files.forEach((file, i) => {
-      data.append(i, file);
+      data.append("file", file);
     })
 
     fetch(`${API_URL}/upload`, {
