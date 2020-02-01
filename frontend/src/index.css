@@ -1,0 +1,61 @@
+body {
+    font-family: sans-serif;
+}
+
+.main-title {
+    color: red;
+    font-size: 30pt;
+    background-image: url("./logo.png");
+    background-size: 40px 40px;
+    background-repeat: no-repeat;
+    padding-left: 45px;
+    font-family: serif;
+}
+
+#file-upload {
+    display: none;
+}
+
+.thumbnails .upload-button, .thumbnails img {
+    background-color: lightgray;
+    text-align: center;
+    border: none;
+    width: 134px;
+    height: 134px;
+    margin: 8px 8px;
+    padding: 0;
+}
+
+.thumbnails .upload-button:hover {
+    background-color: darkgray;
+}
+
+.upload-button label {
+    display: block;
+    width: 134px;
+    height: 134px;
+    line-height: 134px;
+    padding: 0;
+    margin: 0;
+}
+
+.upload-button label .title {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+}
+
+.thumbnails {
+    list-style-type: none;
+    padding: 0px;
+}
+
+.thumbnails li {
+    float : left;
+    margin: 5px;
+    border: 1px solid darkgray;
+    width: 150px;
+    height: 150px;
+    background-color: transparent;
+    display: block;
+}
