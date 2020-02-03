@@ -21,4 +21,4 @@ jobs:
       - run: git remote get-url origin
       - run: git remote get-url origin | cut -d':' -f2 | sed 's/.git//'
       - name: Build docker image
-        run: TAG=${GITHUB_REF#refs/tags} make docker-build docker-push
+        run: TAG=${GITHUB_REF#refs/tags/} make docker-build docker-push
