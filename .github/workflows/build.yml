@@ -12,5 +12,7 @@ jobs:
       GIT_REF: ${{ github.ref }}
     steps:
       - uses: actions/checkout@v1
-      - run: make clean build
-
+      - run: |
+          npm install --silent
+          npm install react-scripts@3.3.0 -g --silent
+          make clean build
