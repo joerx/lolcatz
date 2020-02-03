@@ -1,0 +1,22 @@
+name: Publish release
+
+on:
+  push:
+    tags: ['v*']
+
+jobs:
+  build:
+    name: Build and publish
+    runs-on: ubuntu-18.04
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      DOCKER_REGISTRY: docker.pkg.github.com
+    steps:
+      - uses: actions/checkout@v2
+      - uses: azure/docker-login@v1
+        with:
+          login-server: ${{ env.DOCKER_REGISTRY }}
+          username: x-access-token
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build docker image
+        run: TAG=${GITHUB_REF#refs/tags/} make docker-build docker-push
