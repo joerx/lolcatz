@@ -15,5 +15,5 @@ jobs:
       - name: npm build
         run: |
           npm install --silent
-          npm install react-scripts@3.3.0 -g
+          npm install react-scripts@3.3.0
           npm run build
