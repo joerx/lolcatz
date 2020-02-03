@@ -1,4 +1,4 @@
-REPO ?= $(shell git remote get-url origin | cut -d':' -f2 | sed 's/.git//')
+REPO ?= $(shell git remote get-url origin | sed 's/.*github\.com[\/:]\{1\}//' | sed 's/\.git$$//')
 TAG ?= $(shell git rev-parse --short HEAD)
 
 ifdef DOCKER_REGISTRY
