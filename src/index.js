@@ -2,7 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-const API_URL="http://localhost:8000";
+// Passed at build time, see https://create-react-app.dev/docs/adding-custom-environment-variables/
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:8000";
+
 
 class UploadButton extends React.Component {
 

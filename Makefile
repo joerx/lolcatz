@@ -1,23 +1,18 @@
-REPO ?= $(shell git remote get-url origin | sed 's/.*github\.com[\/:]\{1\}//' | sed 's/\.git$$//')
-TAG ?= $(shell git rev-parse --short HEAD)
-IMAGE_NAME ?= webapp
+GIT_REPO ?= $(shell git remote get-url origin | sed 's/.*github\.com[\/:]\{1\}//' | sed 's/\.git$$//')
+VERSION ?= $(shell git rev-parse --short HEAD)-dev
+NAME ?= webapp
+API_URL ?= http://localhost:8000
 
 ifdef DOCKER_REGISTRY
-	IMAGE := $(DOCKER_REGISTRY)/$(REPO)/$(IMAGE_NAME):$(TAG)
+	IMAGE_TAG := $(DOCKER_REGISTRY)/$(GIT_REPO)/$(NAME):$(VERSION)
 else
-	IMAGE := $(REPO)/$(IMAGE_NAME):$(TAG)
+	IMAGE_TAG := $(GIT_REPO)/$(NAME):$(VERSION)
 endif
 
-docker-build:
-	docker build -t $(IMAGE) .
-
-docker-push:
-	docker push $(IMAGE)
-
 build:
-	npm run build
+	docker build -t $(IMAGE_TAG) --build-arg API_URL=$(API_URL) .
 
-clean:
-	rm -rf build
+publish:
+	docker push $(IMAGE_TAG)
 
-.PHONY: clean build docker-build docker-push
+.PHONY: clean build publish
