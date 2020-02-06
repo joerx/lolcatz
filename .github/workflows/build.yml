@@ -20,7 +20,10 @@ jobs:
           username: x-access-token
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build and test
-        run: npm run build
+        run: |
+          npm install --silent
+          npm install react-scripts@3.3.0
+          npm run build
       - name: Build and push docker image
         run: VERSION="${GITHUB_SHA:0:8}-sandbox" make build publish
         if: github.ref == 'refs/heads/master'
