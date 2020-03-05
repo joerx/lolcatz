@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-18.04
     env:
       GIT_REF: ${{ github.ref }}
-      API_URL: https://api-sandbox.lolcatz.tv
+      API_URL: https://api-sandbox.transfercatz.com
       DOCKER_REGISTRY: docker.pkg.github.com
     steps:
       - uses: actions/checkout@v1
