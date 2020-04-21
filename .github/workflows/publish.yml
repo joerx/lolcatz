@@ -18,11 +18,11 @@ jobs:
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
     steps:
       - uses: actions/checkout@v2
-      - uses: azure/docker-login@v1
-        with:
-          login-server: ${{ env.DOCKER_REGISTRY }}
-          username: x-access-token
-          password: ${{ secrets.GITHUB_TOKEN }}
+#      - uses: azure/docker-login@v1
+#        with:
+#          login-server: ${{ env.DOCKER_REGISTRY }}
+#          username: x-access-token
+#          password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build and push docker image
         run: |
           # VERSION="${GITHUB_REF#refs/tags/}-production" make build publish
