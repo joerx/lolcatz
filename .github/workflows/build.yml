@@ -1,8 +1,8 @@
-name: Build and test
+name: Build and Test
 
 on:
   push:
-    branches: ['*']
+    branches: ['!master']
 
 jobs:
   build:
