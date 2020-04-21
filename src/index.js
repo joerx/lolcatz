@@ -5,11 +5,10 @@ import './index.css';
 // Passed at build time, see https://create-react-app.dev/docs/adding-custom-environment-variables/
 const API_URL = process.env.REACT_APP_API_URL || "http://localhost:8000";
 
-
 class UploadButton extends React.Component {
 
   render() {
-    const classNames=["upload-button", this.props.enabled ? "" : "disabled"]
+    const classNames=["upload-button", this.props.enabled ? "" : "disabled"];
 
     return (
       <div className={classNames.join(" ")}>
@@ -33,7 +32,7 @@ class Thumbnail extends React.Component {
 
 class LolCatz extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       uploading: false,
       images: []
@@ -49,7 +48,7 @@ class LolCatz extends React.Component {
     fetch(`${API_URL}/list`, {method: 'GET'})
       .then(res => res.json())
       .then(data => {
-        console.log("Received", data.length,"images")
+        console.log("Received", data.length,"images");
         this.setState({images: data})
       })
       .catch(err => console.error(err))
@@ -83,14 +82,14 @@ class LolCatz extends React.Component {
       return
     }
 
-    this.setState({uploading: true})
+    this.setState({uploading: true});
 
     const files = Array.from(e.target.files);
 
-    const data = new FormData()
-    files.forEach((file, i) => {
+    const data = new FormData();
+    files.forEach((file, _) => {
       data.append("file", file);
-    })
+    });
 
     fetch(`${API_URL}/upload`, {
       method: 'POST',

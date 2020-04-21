@@ -9,10 +9,16 @@ else
 	IMAGE_TAG := $(GIT_REPO)/$(NAME):$(VERSION)
 endif
 
-build:
+build: node_modules
+	npm run build
+
+docker-build:
 	docker build -t $(IMAGE_TAG) --build-arg API_URL=$(API_URL) .
 
-publish:
+docker-push:
 	docker push $(IMAGE_TAG)
 
-.PHONY: clean build publish
+node_modules:
+	npm install
+
+.PHONY: clean build publish docker-build docker-push
