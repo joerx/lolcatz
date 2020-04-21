@@ -26,5 +26,6 @@ jobs:
       - name: Build and push docker image
         run: |
           # VERSION="${GITHUB_REF#refs/tags/}-production" make build publish
-          REACT_APP_API_URL=${API_URL} npm run build
+          npm install react-scripts@3.3.0 --silent
+          REACT_APP_API_URL=${API_URL} npm run build --silent
           aws s3 sync build/ ${WEBSITE_BUCKET_URL}
