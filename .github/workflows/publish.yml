@@ -12,7 +12,7 @@ jobs:
     env:
       # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       # DOCKER_REGISTRY: docker.pkg.github.com
-      API_URL: https://api.lolcatz.tv
+      API_URL: https://api-sandbox.lolcatz.tv
       WEBSITE_BUCKET_URL: s3://sandbox.lolcatz.tv
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
