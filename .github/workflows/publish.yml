@@ -16,6 +16,7 @@ jobs:
       WEBSITE_BUCKET_URL: s3://sandbox.lolcatz.tv
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_CF_DISTRIBUTION_ID: ${{ secrets.AWS_CF_DISTRIBUTION_ID }}
     steps:
       - uses: actions/checkout@v2
 #      - uses: azure/docker-login@v1
@@ -29,3 +30,4 @@ jobs:
           npm install react-scripts@3.3.0 --silent
           REACT_APP_API_URL=${API_URL} npm run build --silent
           aws s3 sync build/ ${WEBSITE_BUCKET_URL}
+          aws cloudfront create-invalidation --distribution-id ${AWS_CF_DISTRIBUTION_ID} --path="/*"

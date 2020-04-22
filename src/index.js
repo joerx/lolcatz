@@ -56,7 +56,7 @@ class LolCatz extends React.Component {
 
   render() {
     return (<div className="app">
-      <h1 className="main-title">TransferCatz</h1>
+      <h1 className="main-title">LolCatz</h1>
         <ul className="thumbnails">
 
           <li>
