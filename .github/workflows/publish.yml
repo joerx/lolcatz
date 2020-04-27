@@ -29,5 +29,5 @@ jobs:
           # VERSION="${GITHUB_REF#refs/tags/}-production" make build publish
           npm install react-scripts@3.3.0 --silent
           REACT_APP_API_URL=${API_URL} npm run build --silent
-          aws s3 sync build/ ${WEBSITE_BUCKET_URL}
-          aws cloudfront create-invalidation --distribution-id ${AWS_CF_DISTRIBUTION_ID} --path="/*"
+#          aws s3 sync build/ ${WEBSITE_BUCKET_URL}
+#          aws cloudfront create-invalidation --distribution-id ${AWS_CF_DISTRIBUTION_ID} --path="/*"
